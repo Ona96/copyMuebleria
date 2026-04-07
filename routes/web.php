@@ -6,6 +6,7 @@ use App\Http\Controllers\ChequeController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\ProyeccionesController;
+use App\Http\Controllers\BackupController;  // ← NUEVO: Controlador de sincronización
 
 // Ruta de bienvenida
 Route::get('/', function () {
@@ -60,4 +61,13 @@ Route::middleware('auth')->group(function () {
     // Proyecciones
     Route::get('proyecciones', [ProyeccionesController::class, 'index'])->name('proyecciones.index');
     Route::get('proyecciones/exportar-pdf', [ProyeccionesController::class, 'exportarPDF'])->name('proyecciones.exportarPDF');
+
+    // Mostrar la vista de sincronización
+    Route::get('sincronizacion', function () {
+        return view('sincronizacion');
+    })->name('sincronizacion');
+    // SINCRONIZACIÓN / BACKUP ENTRE PCs
+    Route::post('backup/exportar', [BackupController::class, 'exportarANube'])->name('backup.exportar');
+    Route::post('backup/importar', [BackupController::class, 'importarDeNube'])->name('backup.importar');
+    Route::get('backup/info', [BackupController::class, 'infoSincronizacion'])->name('backup.info');
 });

@@ -40,7 +40,11 @@
                                 <i class="bi bi-people fs-2"></i><br>Usuarios Admin
                             </a>
                         </div>
-                        <!-- Agrega más accesos directos aquí si lo necesitas -->
+                        <div class="col-md-4">
+                            <a href="{{ url('/sincronizacion') }}" class="btn btn-outline-primary w-100 py-3">
+                                <i class="bi bi-arrow-repeat fs-2"></i><br>Sincronización PC ↔ Notebook
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
