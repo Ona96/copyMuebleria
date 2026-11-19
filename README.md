@@ -36,7 +36,7 @@ El negocio trabaja con los mismos datos en dos máquinas. En lugar de un servido
 1. **Exporta**: `pg_dump --data-only` de PostgreSQL → subida a Google Drive con `rclone` (carpeta `SincronizacionManual`).
 2. **Importa**: descarga el dump y lo convierte a **UPSERT** (`INSERT ... ON CONFLICT DO UPDATE`): fusiona los datos **sin duplicar y sin borrar** nada de lo que ya está en la otra máquina, comenta los comandos destructivos (DROP/TRUNCATE/DELETE) y re-sincroniza las secuencias SERIAL al máximo id para evitar colisiones de claves.
 
-Requisitos del módulo: PostgreSQL local con `pg_dump`/`psql` accesibles (se buscan en `C:\Program Files\PostgreSQL\<versión>\bin\`) y `rclone` configurado con el remote `muebleria-Marquez` apuntando a Google Drive. En `utils/` se incluye el binario de rclone para Windows (v1.72.1) junto con sus manuales, para que la sincronización funcione sin instalar nada extra. *Ese manual incluido es, por su volumen, el motivo por el que GitHub llega a mostrar «Roff» entre los lenguajes del repo: el sistema real es PHP.*
+Requisitos del módulo: PostgreSQL local con `pg_dump`/`psql` accesibles (se buscan en `C:\Program Files\PostgreSQL\<versión>\bin\`) y `rclone` configurado con el remote `muebleria-Marquez` apuntando a Google Drive. En `utils/` se incluye el binario de rclone para Windows (v1.72.1) junto con sus manuales, para que la sincronización funcione sin instalar nada extra. Los dumps que genera el módulo viven fuera del repo y nunca se versionan.
 
 ## Stack
 
@@ -86,7 +86,6 @@ database/
 └─ seeders/DatosInicialesSeeder.php   # bancos, cuentas y padrón de proveedores
 resources/views/            # 26 vistas Blade organizadas por módulo
 routes/web.php               # todas las rutas
-backups/                     # dumps de la sincronización
 utils/                       # rclone + manuales (soporte del módulo de sincronización)
 ```
 

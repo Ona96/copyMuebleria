@@ -24,3 +24,6 @@ Homestead.yaml
 npm-debug.log
 Thumbs.db
 yarn-error.log
+
+# Dumps de la sincronizacion: nunca se versionan (contienen datos del negocio)
+/backups

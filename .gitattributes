@@ -9,3 +9,7 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
+
+# rclone y sus manuales (soporte del modulo de sincronizacion) no cuentan
+# para las estadisticas de lenguaje de GitHub.
+utils/** linguist-vendored
